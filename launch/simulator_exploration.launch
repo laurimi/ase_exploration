@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Turtlebot simulator with navigation -->
+	<include file="$(find ase_exploration)/launch/turtlebot_simulator.launch">
+		<arg name="map_file" value="$(find ase_exploration)/maps/mit.yaml"/>
+		<arg name="world_file" value="$(find ase_exploration)/maps/stage/mit.world"/>
+	</include>
+
+	<!-- SLAM for global map and map->base_link tf -->
+	<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+		<param name="xmin" value="-1.0"/>
+		<param name="xmax" value="1.0"/>
+		<param name="ymin" value="-1.0"/>
+		<param name="ymax" value="1.0"/>
+	</node>
+
+	<!-- Frontier exploration used as fallback solution -->
+	<node pkg="frontier_exploration" type="explore_server" name="frontier_exploration" output="screen">
+	    <rosparam file="$(find ase_exploration)/param/frontier_exploration.yaml" command="load" ns="explore_costmap"/>
+	</node>
+
+	<!-- ase_exploration_node -->
+	<node pkg="ase_exploration" type="ase_exploration_planner_node" name="ase_exploration_planner_node" output="screen">
+		<!-- Subscribed topics -->
+		<remap from="map" to="map"/>
+		<remap from="costmap" to="move_base/global_costmap/costmap"/>
+		<remap from="costmap_updates" to="move_base/global_costmap/costmap_updates"/>
+
+		<!-- Action where move_base may be found -->
+		<remap from="move_base" to="move_base"/>
+
+		<!-- Published topics -->
+		<remap from="planner_paths" to="planner_paths"/>
+
+		<!-- Frontier exploration services -->
+		<remap from="frontier_exploration/explore_costmap/explore_boundary/update_boundary_polygon" 
+			to="frontier_exploration/explore_costmap/explore_boundary/update_boundary_polygon"/>
+ 		<remap from="frontier_exploration/explore_costmap/explore_boundary/get_next_frontier" 
+			to="frontier_exploration/explore_costmap/explore_boundary/get_next_frontier"/>
+
+		<!-- Read all parameters -->
+		<rosparam file="$(find ase_exploration)/param/planner.yaml" command="load"/>
+	</node>
+
+	<!--  **************** Visualisation ****************  -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find ase_exploration)/rviz/simulator_exploration.rviz"/>
+</launch>

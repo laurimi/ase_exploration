@@ -1,0 +1,39 @@
+# these parameters are set at startup
+map_frame_id: map
+base_frame_id: base_link
+
+goal_execution_time: 10.0
+min_traj_length: 0.2
+min_reward: 30.0
+max_sampling_tries: 30
+frontier_distance_threshold: 2.0
+wait_between_planner_iterations: false
+
+lin_v_min : 0.3
+lin_v_max: 1.0
+ang_v_min: -1.0
+ang_v_max: 1.0
+f_rot_min: -0.02
+f_rot_max: 0.02
+
+# the following can also be changed via dynamic_reconfigure
+horizon: 3
+discount: 1.0
+schedule_a: 4
+schedule_b: 3
+num_kernels: 5
+std_vel: 0.2
+std_ang: 0.1
+std_fr: 0.02
+num_particles: 10
+resample_thresh: 0.33
+
+allow_unknown_targets: true
+default_ctrl_duration: 1.0
+
+laser_min_angle_deg: -90.0
+laser_max_angle_deg: 90.0
+laser_angle_step_deg: 5.0
+laser_max_dist_m: 4.0
+p_false_pos: 0.05
+p_false_neg: 0.05
