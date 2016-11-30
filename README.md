@@ -30,8 +30,8 @@ BiBTeX:
   title   = {Planning for robotic exploration based on forward simulation},
   journal = {Robotics and Autonomous Systems},
   year    = 2016,
-  volume  = "83",
-  pages   = "15 - 31",
+  volume  = 83,
+  pages   = {15 - 31},
   doi     = {10.1016/j.robot.2016.06.008}
 }
 ```
