@@ -21,7 +21,7 @@ Click the link below to view a video showing the software in action:
 Further details are available in our journal paper on the subject.
 If you use this code in an academic context, please cite the paper:
 
-Mikko Lauri, Risto Ritala. *Planning for robotic exploration based on forward simulation*, Robotics and Autonomous Systems (2016), DOI: [10.1016/j.robot.2016.06.008](https://doi.org/10.1016/j.robot.2016.06.008)
+Mikko Lauri, Risto Ritala. *Planning for robotic exploration based on forward simulation*, Robotics and Autonomous Systems, Vol 83, (2016), pp. 15-31, DOI: [10.1016/j.robot.2016.06.008](https://doi.org/10.1016/j.robot.2016.06.008)
 
 BiBTeX:
 ```
@@ -30,6 +30,8 @@ BiBTeX:
   title   = {Planning for robotic exploration based on forward simulation},
   journal = {Robotics and Autonomous Systems},
   year    = 2016,
+  volume  = "83",
+  pages   = "15 - 31",
   doi     = {10.1016/j.robot.2016.06.008}
 }
 ```
