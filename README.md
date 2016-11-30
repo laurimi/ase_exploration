@@ -23,6 +23,8 @@ If you use this code in an academic context, please cite the paper:
 
 Mikko Lauri, Risto Ritala. *Planning for robotic exploration based on forward simulation*, Robotics and Autonomous Systems, Vol 83, (2016), pp. 15-31, DOI: [10.1016/j.robot.2016.06.008](https://doi.org/10.1016/j.robot.2016.06.008)
 
+A preprint version is also [available on arXiv](https://arxiv.org/abs/1502.02474).
+
 BiBTeX:
 ```
 @article{Lauri2016planning,
